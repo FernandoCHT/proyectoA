@@ -27,7 +27,7 @@ def eliminarProducto(request, id,
 
 def registrar(request):
     if request.method == 'POST':
-        form = ProductoForm(request.POST, request.FILES)
+        form = ProductoForm(request.POST)
         if form.is_valid(): #Si los datos recibidos son correctos
             form.save() #inserta
             productos=Producto.objects.all()
