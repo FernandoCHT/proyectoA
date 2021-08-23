@@ -1,0 +1,56 @@
+{% extends "inicio/encabezado.html" %}
+
+{%block titulo %}Administración{% endblock %}
+
+{% block contenido%}
+
+<div class="row">
+    <div class="col s12 m12 l12">
+        <div class="col s12 m12 l12">
+            <form action="{% url 'Registrar'%}"  method="POST" role="form">
+                {%csrf_token%}
+                <h5>Agregar producto:</h5>
+                <div class="input-field col s12 m6">
+                    <input placeholder="Nombre" name="nombre" type="text" class="validate">
+                </div>
+                <div class="input-field col s12 m6">
+                    <input placeholder="Marca" name="marca" type="text" class="validate">
+                </div>
+                <div class="input-field col s12 m6">
+                    <input placeholder="Categoria" name="categoria" type="text" class="validate">
+                </div>
+                <div class="input-field col s12 m6">
+                    <input placeholder="SubCategoria" name="subcategoria" type="text" class="validate">
+                </div>
+                <div class="input-field col s12 m6">
+                    <input placeholder="Color" name="color" type="text" class="validate">
+                </div>
+                <div class="input-field col s12 m6">
+                    <input placeholder="Precio $$" name="precio" type="number" class="validate">
+                </div>
+                <div class="input-field col s12 m6">
+                    <input placeholder="Descripcion" name="descripcion" type="text" class="validate">
+                </div>
+                <div class="input-field col s12 m6">
+                    <input placeholder="Cantidad" name="cantidad" type="number" min="1" max="999" class="validate">
+                </div>
+                <div class="file-field input-field col s12">
+                    <div class="btn">
+                        <span>Subir imagen</span>
+                        <input type="file" name="imagen">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light right" type="submit"  class="aceptar">Agregar producto
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}
