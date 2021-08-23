@@ -1,0 +1,56 @@
+{% extends "inicio/encabezado.html" %}
+
+{%block titulo %}Administración{% endblock %}
+
+{% block contenido%}
+
+<div>
+    <div class="col s12 m12 l12">
+        <br>
+        
+         <h2>Editar/Borrar</h2>
+         <br>
+<form>
+    <div class="input-field">
+      <input id="search" type="search" required placeholder="Buscar productos para Editar/Borrar">
+      <label for="search"><i class="material-icons">search</i></label>
+      <i class="material-icons">close</i>
+    </div>
+  </form> 
+  <div name="tabla pedidos">
+      <table border="1px" width="100%" class="striped" >
+          <tr>
+              <td>Id</td>
+              <td>Nombre</td>
+              <td>Precio</td>
+              <td>Marca</td>
+              <td>Eliminar</td>
+              <td>Modificar</td>
+          </tr>
+
+
+        {% for producto in producto %}
+          <tr>
+                <!--<td class="text-center">
+                    <img src="{{producto.imagen.url}}" alt="" class="img-media">
+                </td>-->
+                <td class="text-semibold">{{producto.id}}</td>
+                <td class="text-semibold">{{producto.nombre}}</td>
+                <td class="muted">{{producto.precio}}</td>
+                <td class="muted">{{producto.marca}}</td>
+                <td class="text-center">
+                    <a href="{%url 'Eliminar' producto.id%}">Eliminar</a>
+                </td>
+                <td class="text-center">
+                    <a href="{%url 'ConsultaIndividual' producto.id%}">Editar</a>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+      </table>
+  </div>
+</div>
+    </div>
+
+{%endblock%}

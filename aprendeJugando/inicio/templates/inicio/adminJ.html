@@ -1,0 +1,52 @@
+{% extends "inicio/encabezado.html" %}
+
+{%block titulo %}Administración{% endblock %}
+
+
+
+{% block contenido%}
+{%load static%}
+<div class="row" id="resultado">
+
+    <a href="#" class="col s12 m4 center" id="pedidos">
+        <div class="card-panel grey lighten-2 hoverable">
+            <span class="black-text">
+                <img src="{%static 'inicio/img/document.png'%}">
+                <h5>
+                    <p>Pedidos</p>
+                </h5>
+            </span>
+        </div>
+    </a>
+
+    <a href="{%url 'RegistrarP'%}" class="col s12 m4 center" id="registrar">
+        <div class="card-panel grey lighten-2 hoverable">
+            <span class="black-text">
+                <img src="{%static 'inicio/img/plus.png'%}">
+                <h5>
+                    <p>Registrar</p>
+                </h5>
+            </span>
+        </div>
+    </a>
+
+    <a href="{%url 'ConsultarP'%}" class="col s12 m4 center" id="registrar">
+        <div class="card-panel grey lighten-2 hoverable">
+            <span class="black-text">
+                <img src="{%static 'inicio/img/edit.png'%}">
+                <h5>
+                    <p>Editar</p>
+                </h5>
+            </span>
+        </div>
+    </a>
+
+
+
+
+
+
+</div>
+{%endblock%}
+
+
