@@ -1,6 +1,8 @@
 from django import forms
 from django.db import models
 from .models import Producto
+from .models import ComentarioCliente
+from .models import Administrador
 from django.forms.models import fields_for_model
 from django.forms import ModelForm, ClearableFileInput, widgets
 
@@ -12,4 +14,12 @@ class ProductoForm(forms.ModelForm):
         model = Producto
         fields = ['nombre', 'marca','categoria','subcategoria','color','precio','descripcion','cantidad']
         
-        
+class ComentarioClienteForm(forms.ModelForm):
+    class Meta:
+        model = ComentarioCliente
+        fields = ['cliente','asunto','mensaje']
+
+class AdministradorForm(forms.ModelForm):
+    class Meta:
+        model = Administrador
+        fields = ['nombre','apellidoPaterno', 'apellidoMaterno', 'usuario', 'correo', 'password']

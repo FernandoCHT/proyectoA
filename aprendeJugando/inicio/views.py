@@ -24,3 +24,9 @@ def login(request):
 
 def adminJ(request):
     return render(request, "inicio/adminJ.html")
+
+def terminos(request):
+    return render(request, "inicio/terminos.html")
+
+def aviso(request):
+    return render(request, "inicio/aviso.html")

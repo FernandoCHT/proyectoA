@@ -1,8 +1,233 @@
+{% extends "inicio/encabezadoInicio.html" %}
+
+{%block titulo %}Aprende Jugando{% endblock %}
 
 
+{%block slider %}
+       
+			<!--  Inicio del  slide -->
+			
+				<div class="slider">
+					<ul class="slides">
+						<li>
+							<img src="media/fotos/slide1.png"> 
+							<div class="caption center-align">
+								<h3 class="animated flip">Al final...¡Encajan!</h3>
+								<h5 class="light grey-text text-lighten-3 ani">Ediciones especiales 3x3</h5>
+								<a class="waves-effect waves-light btn animated bounceIn" href="{%url 'ConsultarP'%}">Comprar</a>
+							</div>
+						</li>
+						<li>
+							<img src="media/fotos/slide2.jpg"> 
+							<div class="caption left-align">
+								<h3>Uniendo pieza a pieza.</h3>
+								<h5 class="light grey-text text-lighten-3">Productos de calidad</h5>
+							</div>
+						</li>
+						<li>
+							<img src="media/fotos/slide3.jpg"> 
+							<div class="caption right-align">
+								<h3>Descuentos de verano</h3>
+								<h5 class="light grey-text text-lighten-3">Descubre todo lo que tenemos</h5>
+							</div>
+						</li>
+						<li>
+							<img src="media/fotos/slide4.jpg"> 
+							<div class="caption left-align">
+								<h3 class="white-text">Móntatelo como quieras</h3>
+								<h5 class="light white-text text-lighten-3">Cubos personalizados</h5>
+							</div>
+						</li>
+					</ul>
+				</div>	
+			     
+			<script type="text/javascript">
 
-{% block titulo %} PRINCIPAL {% endblock %}
+				$(document).ready(function(){
+					$('.slider').slider({full_width: true});
+				});
+			</script>
 
-{% block contenido %}
-    <h1>Aqui va platilla de Inicio</h1>
+<!-- Fin del slide -->
+
 {% endblock %}
+<!--Perfil-->
+
+			<div id="modal1" class="modal">
+				<div class="modal-content">
+					<h5 class="center">Perfil</h5>
+					<div class="col s12 m16 l16">
+						<div class="center">
+							<img src="media/fotos/profile.png" class="circle" width="150px">
+							<h6 class="grey-text">Correo:</h6>
+							<hr>
+						</div>
+						<div id="datos" class="col s12 m12 l12">
+							<div class="col s6 m6 l6  left" >
+								<h6 class="grey-text">Nombre:</h6>
+								<h5></h5>
+								<h6 class="grey-text">Apellido Paterno: </h6>
+								<h5></h5>
+								<h6 class="grey-text">Apellido Materno: </h6>
+								<h5></h5>
+								<h6 class="grey-text">Nombre usuario: </h6>
+								<h5></h5>
+							</div>
+							<div class="col s12 m12 l12 right">
+							<!--	<input type="submit" name="" value="Editar perfil" class="waves-effect waves-light btn green"> -->
+								<br><br>
+								<!--<input type="submit" name="" value="Eliminar perfil" class="delete waves-effect waves-light btn red" data-nombre="">-->
+								<br>
+								<br>
+							<!--<input type="submit" name="" value="Cambiar contraseña" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text"> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					
+				</div>
+			</div>
+
+			<script type="text/javascript">
+				$(document).ready(function(){
+			    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+			    $('.modal-trigger').leanModal();});
+			</script>
+
+<!--PERFIL -->
+{%block contenido %}
+<!--Inicio contenido -->
+			<div id="contenido">
+				<div id="servicios" class="col s12 m12 l12">
+					<div class="row center">
+						<div id="info" class="col s12 m6 l3 center">
+							<img src="media/fotos/carro.png" class="responsive-img animated bounceInLeft">
+							<br>Compra
+						</div>
+						<div id="info" class="col s12 m6 l3 center">
+							<img src="media/fotos/tarjeta.png" class="responsive-img animated bounceInLeft">
+							<br>
+							Paga
+						</div>
+
+						<div id="info" class="col s12 m6 l3 center">
+							<img src="media/fotos/camion.png" class="responsive-img animated bounceInLeft">
+							<br>
+							Espera
+						</div>	
+						<div id="info" class="col s12 m6 l3 center">
+							<img src="media/fotos/buzon.png" class="responsive-img animated bounceInLeft">
+							<br>
+							Disfruta
+						</div>		
+					</div>	
+				</div>
+				<div id="productos">
+					<div class="container">
+						<div class="row">
+							<div id="separador" class="col s12 m12 l12"></div>
+							<div id="ofertas" class="col s6  m6 l6  left">
+								Ofertas
+							</div>
+							<div id="masofertas" class="col s6  m6 l6 right">
+								<a href="{%url 'ConsultarP'%}">Todas las ofertas</a>
+							</div>
+							<div class="row">
+								<!--Proucto 1-->
+								<div class="col s12 m6 l3">
+									<div class="card">
+										<div class="card-image waves-effect waves-block waves-light">
+											<img class="activator" src="media/fotos/p1.jpg">
+										</div>
+										<div class="card-content">
+											<span class="card-title activator grey-text text-darken-4">Cubo Artesanal<i class="material-icons right">more_vert</i></span>
+											<p><a href="{%url 'ConsultarP'%}"><h5>Agregar al carrito</h5></a></p>
+										</div>
+										<div class="card-reveal">
+											<span class="card-title grey-text text-darken-4">Cubo Artesanal<i class="material-icons right">close</i></span>
+											<p>Precio: $200</p>
+											<p>Marca: Moyu</p>
+											<p>Base: Cafe</p>
+							<p><a href="{%url 'ConsultarP'%}"><h6>Agregar al carrito</h6></a></p>
+										</div>
+									</div>
+								</div>
+								<!--Proucto 2-->
+								<div class="col s12 m6 l3">
+									<div class="card">
+										<div class="card-image waves-effect waves-block waves-light">
+											<img class="activator" src="media/fotos/p2.jpg">
+										</div>
+										<div class="card-content">
+											<span class="card-title activator grey-text text-darken-4">Gosth Cube<i class="material-icons right">more_vert</i></span>
+											<p><a href="{%url 'ConsultarP'%}"><h5>Agregar al carrito</h5></a></p>
+										</div>
+										<div class="card-reveal">
+											<span class="card-title grey-text text-darken-4">Gosth Cube<i class="material-icons right">close</i></span>
+											<p>Precio: $500</p>
+											<p>Marca: Mefferts</p>
+											<p>Base: Negro</p>
+							<p><a href="{%url 'ConsultarP'%}"><h6>Agregar al carrito</h6></a></p>
+										</div>
+									</div>
+								</div>
+								<!--Proucto 3-->
+								<div class="col s12 m6 l3">
+									<div class="card">
+										<div class="card-image waves-effect waves-block waves-light">
+											<img class="activator" src="media/fotos/p3.jpg">
+										</div>
+										<div class="card-content">
+											<span class="card-title activator grey-text text-darken-4">Manzana 3x3<i class="material-icons right">more_vert</i></span>
+											<p><a href="{%url 'ConsultarP'%}"><h5>Agregar al carrito</h5></a></p>
+										</div>
+										<div class="card-reveal">
+											<span class="card-title grey-text text-darken-4">Manzana 3x3<i class="material-icons right">close</i></span>
+											<p>Precio: $150</p>
+											<p>Marca: ShengShow</p>
+											<p>Base: Rojo</p>
+							<p><a href="{%url 'ConsultarP'%}"><h6>Agregar al carrito</h6></a></p>
+										</div>
+									</div>
+								</div>
+								<!--Proucto 4-->
+								<div class="col s12 m6 l3">
+									<div class="card">
+										<div class="card-image waves-effect waves-block waves-light">
+											<img class="activator" src="media/fotos/p4.jpg">
+										</div>
+										<div class="card-content">
+											<span class="card-title activator grey-text text-darken-4">Megamorphix<i class="material-icons right">more_vert</i></span>
+											<p><a href="{%url 'ConsultarP'%}"><h5>Agregar al carrito</h5></a></p>
+										</div>
+										<div class="card-reveal">
+											<span class="card-title grey-text text-darken-4">Megamorphix<i class="material-icons right">close</i></span>
+											<p>Precio: $200</p>
+											<p>Marca: Sheng Show</p>
+											<p>Base: Colors</p>
+							<p><a href="{%url 'ConsultarP'%}"><h6>Agregar al carrito</h6></a></p>
+										</div>
+									</div>
+								</div>
+								<!--Fin productos -->
+							</div>
+							<h4>¡Compra ahora! <font size="5" class="right"><a class="waves-effect waves-light btn-large" href="{%url 'ConsultarP'%}">¡Comprar!</a></font></h4>
+							<br>
+							<br>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		<!--Fin contenido -->
+
+        {% endblock %}
+
+        
+
+
+   
+
+
+	
