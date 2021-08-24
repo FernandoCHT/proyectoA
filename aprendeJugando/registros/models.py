@@ -50,3 +50,41 @@ class Producto(models.Model):  # Define la estructura de nuestra tabla
         ordering = ["created"]
     def __str__(self):
         return self.nombre
+
+class ComentarioCliente(models.Model):
+    id = models.AutoField(primary_key=True,verbose_name="Clave")
+    cliente = models.TextField(verbose_name="Cliente")
+    asunto = models.TextField(verbose_name="Asunto")
+    mensaje = models.TextField(verbose_name="Comentario")
+    created =models.DateTimeField(auto_now_add=True,verbose_name="Registrado")
+    class Meta:
+        verbose_name = "Comentario Cliente"
+        verbose_name_plural = "Comentarios Cliente"
+        ordering = ["-created"]
+    def __str__(self):
+    
+        return self.asunto
+
+    def __str__(self):
+    
+        return self.mensaje
+        #Indica que se mostrára el mensaje como valor en la tabla
+
+class Administrador(models.Model):
+    id = models.AutoField(primary_key=True,verbose_name="Clave")
+    nombre = models.CharField(max_length=30, verbose_name="Nombre")
+    apellidoPaterno=models.CharField(max_length=20, verbose_name="Apellido Paterno")
+    apellidoMaterno=models.CharField(max_length=20, verbose_name="Apellido Materno")
+    usuario = models.CharField(max_length=20, verbose_name="Usuario")
+    correo=models.EmailField(verbose_name="Correo Electronico")
+    password=models.CharField(max_length=8, verbose_name="Password")
+    created =models.DateTimeField(auto_now_add=True,verbose_name="Registrado")
+   
+    
+    class Meta:
+        verbose_name = "Administrador"
+        verbose_name_plural = "Administradores"
+        ordering = ["-created"]
+    def __str__(self):
+     return self.nombre
+    #Indica que se mostrára el mensaje como valor en la tabla

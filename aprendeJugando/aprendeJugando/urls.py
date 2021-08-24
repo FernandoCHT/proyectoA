@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+ 
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
@@ -20,13 +21,18 @@ from inicio import views
 from django.conf import settings
 from registros import views as views_registros
 
+from django.contrib.auth.views import LoginView, LogoutView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.principal, name="Principal"),
+    path('aviso/', views.aviso, name='Aviso'),
+    path('terminos/', views.terminos, name='Terminos'),
     path('contacto/', views.contacto, name="Contacto"),
     path('formulario/', views.formulario, name="Formulario"),
     path('registro/', views.registro, name="Registro"),
-    path('login/', views.login, name="Login"),
+    path('login/',LoginView.as_view(template_name='inicio/login.html'),name="Login"),
+    path('logout/',LogoutView.as_view(template_name='inicio/logout.html'),name="Logout"),
     path('adminJ/', views.adminJ, name="AdminJ"),
     path('registrarProducto/', views_registros.registroProducto, name="RegistrarP"),
     path('registrarAdmin/', views_registros.registroAdmin, name="RegistrarA"),
@@ -35,6 +41,9 @@ urlpatterns = [
     path('eliminarProducto/<int:id>/', views_registros.eliminarProducto, name='Eliminar'),
     path('formEditarProducto/<int:id>/', views_registros.consultaProductoIndividual,name='ConsultaIndividual'),
     path('editarProducto/<int:id>/', views_registros.editarProducto, name='Editar'),
+
+    path('registrarComentario/',views_registros.registrarComentario,name="RegistrarC"),
+    path('registrarAdministrador/',views_registros.registrarAdministrador,name="Administrador"),
 
 
 

@@ -1,0 +1,201 @@
+<html lang="en">
+  <head>
+    <meta name="theme-color" content="#ff6431" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>{% block titulo %}{% endblock %}</title>
+
+    {%load static%}
+    <!-- Compiled and minified JavaScript -->
+    <script src="{%static 'inicio/js/jquery.js'%}"></script>
+    <script src="{%static 'inicio/js/materialize.min.js'%}"></script>
+
+    <!-- Compiled and minified CSS -->
+    <meta name="viewport" content="width = device-width, initial-scale = 1" />
+    <link rel="stylesheet" href="{%static 'inicio/css/materialize.css'%}" />
+    <link rel="stylesheet" href="{%static 'inicio/css/home.css'%}" />
+    <link rel="stylesheet" href="{%static 'inicio/css/animate.min.css'%}" />
+    <link rel="stylesheet" href="{%static 'inicio/dist/sweetalert.css'%}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+
+  <body class="animated fadeIn">
+    <!--Inicio de la barra de navegacion-->
+    {% block inicio %}
+
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="{%url 'Principal'%}" id="Logo" class="brand-logo left animated fadeIn"
+            ><img src="{%static 'inicio/img/Logo.png'%}" alt=""
+          /></a>
+
+          <a href="#" data-activates="mobile-demo" class="button-collapse"
+            ><i class="material-icons"><i class="material-icons">menu</i></i></a
+          >
+          <ul id="enlaces_menu" class="hide-on-med-and-down">
+            <li><a href="{%url 'ConsultarP'%}">Catálogo</a></li>
+            <li><a href="{%url 'ConsultarP'%}">Ofertas</a></li>
+            <ul id="" class="hide-on-med-and-down right">
+              <li>
+                <a href="{%url 'ConsultarP'%}"
+                  ><img src="media/fotos/carrito.png" width="50" height="58"
+                /></a>
+              </li>
+              <li><a href="{%url 'Registro'%}" id="add">Registrarse</a></li>
+              <li>
+                <a href="{%url 'Login'%}" id="BotonLogin">Iniciar sesión</a>
+              </li>
+            </ul>
+          </ul>
+
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="{%url 'Principal'%}">Aprende Jugando</a></li>
+            <li><a href="#" id="add1">Registrarse</a></li>
+            <li><a href="#" id="BotonLogin">Iniciar sesión</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <script type="text/javascript">
+      $(".button-collapse").sideNav();
+    </script>
+
+    {%endblock%}
+
+    <!--Inicio de la barra de navegacion-->
+
+    <!-- Fin de la barra de navegacion-->
+    <br />
+
+    <div>
+      {% block slider %}
+      <!--Template Tag-->
+      <!-- slider-->
+      {% endblock %}
+      <!--Contenido-->
+      {% block contenido %}
+      <!--Template Tag-->
+      <!-- Contenido Principal-->
+      {% endblock %} {% block footer %}
+      <!-- Footer -->
+
+      <footer class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 m12 s12">
+              <br />
+              <h5 class="white-text">Más</h5>
+              <br />
+              <ul>
+                <li>
+                  <a class="grey-text text-lighten-3" href="{%url 'Aviso'%}"
+                    >Aviso de privacidad</a
+                  >
+                </li>
+                <li>
+                  <a class="grey-text text-lighten-3" href="{%url 'Aviso'%}"
+                    >Preguntas frecuentes</a
+                  >
+                </li>
+                <li>
+                  <a class="grey-text text-lighten-3" href="{%url 'Principal'%}"
+                    >Empresa</a
+                  >
+                </li>
+                <li>
+                  <a class="grey-text text-lighten-3" href="{%url 'Terminos'%}"
+                    >Terminos de uso</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="col l6 m12 s12">
+              <!-- Formulario -->
+              <form class="form-horizontal"
+                action="{% url 'RegistrarC'%}"
+                method="POST"
+                role="form"
+              >
+                {%csrf_token%}
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label text-right"
+                        >Nombre:</label
+                      >
+                      <div class="col-sm-10">
+                        <input
+                          name="cliente"
+                          type="text"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label text-right"
+                          >Asunto:</label
+                        >
+                        <div class="col-sm-10">
+                          <input
+                            name="asunto"
+                            type="text"
+                            class="form-control"
+                          />
+                        </div>
+                      </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label text-right"
+                        >Mensaje:</label
+                      >
+                      <div class="col-sm-10">
+                        <textarea
+                          name="mensaje"
+                          cols="50"
+                          rows="10"
+                          class="form-control"
+                        >
+                        </textarea>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="form-actions text-right">
+                      <button
+                        type="submit"
+                        value="Enviar"
+                        class="btn btn-primary">ENVIAR</button>
+                      
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <!-- Fin del Formulario -->
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-copyright">
+          <div class="container">
+            © Todos los derechos reservados
+            <a class="grey-text text-lighten-4 right" href="{%url 'Principal'%}"
+              >Inicio</a
+            >
+          </div>
+        </div>
+      </footer>
+
+      <!-- Footer -->
+      {% endblock %}
+    </div>
+    <!--Menu
+    <a href="{%url 'Principal'%}">Home</a>
+    <a href="{%url 'Formulario'%}">Registrar</a>
+    <a href="{%url 'Contacto'%}">Contactanos</a>
+    -->
+  </body>
+</html>

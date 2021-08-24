@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Producto
 from .forms import ProductoForm
+from .forms import ComentarioClienteForm
+from .forms import AdministradorForm
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 
@@ -52,4 +54,22 @@ def editarProducto(request, id):
 
     return render(request,"registros/formEditarProducto.html",{'producto':producto})
 
- 
+def registrarComentario(request):
+    if request.method == 'POST':
+        form = ComentarioClienteForm(request.POST)
+        if form.is_valid(): #Si los datos recibidos son correctos
+            form.save() #inserta
+            return render(request,'inicio/principal.html')
+            form = ComentarioClienteForm()
+            #Si algo sale mal se reenvian al formulario los datos ingresados
+            return render(request,'inicio/principal.html',{'form': form})
+
+def registrarAdministrador(request):
+    if request.method == 'POST':
+        form = AdministradorForm(request.POST)
+        if form.is_valid(): #Si los datos recibidos son correctos
+            form.save() #inserta
+            return render(request,'registros/registroAdmin.html')
+            form = AdministradorForm()
+            #Si algo sale mal se reenvian al formulario los datos ingresados
+            return render(request,'registros/registroAdmin.html',{'form': form})
