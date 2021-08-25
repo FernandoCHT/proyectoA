@@ -20,6 +20,7 @@
   <div name="tabla pedidos">
       <table border="1px" width="100%" class="striped" >
           <tr>
+              <td>Imagen</td>
               <td>Id</td>
               <td>Nombre</td>
               <td>Precio</td>
@@ -29,11 +30,11 @@
           </tr>
 
 
-        {% for producto in producto %}
+        {% for producto in productos %}
           <tr>
-                <!--<td class="text-center">
-                    <img src="{{producto.imagen.url}}" alt="" class="img-media">
-                </td>-->
+                <td class="text-center">
+                    <img src="{{producto.imagen.url}}" alt="" class="img-media" width="68" height="68">
+                </td>
                 <td class="text-semibold">{{producto.id}}</td>
                 <td class="text-semibold">{{producto.nombre}}</td>
                 <td class="muted">{{producto.precio}}</td>

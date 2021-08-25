@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Producto
-from .forms import ProductoForm
+from .models import Productos
+from .forms import ConsultaProductoForm
 from .forms import ComentarioClienteForm
 from .forms import AdministradorForm
 from django.shortcuts import get_object_or_404
@@ -14,45 +14,55 @@ def registroAdmin(request):
     return render(request, "registros/registroAdmin.html")
 
 def registros(request):
-    productos=Producto.objects.all()
-    return render(request, "registros/consultarProductos.html", {'producto':productos})
+    productos=Productos.objects.all()
+    return render(request, "registros/consultarProductos.html", {'productos':productos})
 
-def eliminarProducto(request, id,
-    confirmacion='registros/confirmarEliminacion.html'):
-    producto = get_object_or_404(Producto, id=id)
-    if request.method=='POST':
+def eliminarProducto(request, id, confirmacion='registros/confirmarEliminacion.html'):
+    producto = get_object_or_404(Productos, id=id)
+    if request.method == 'POST':
         producto.delete()
-        productos=Producto.objects.all()
-        return render(request, "registros/consultarProductos.html", {'producto': productos})
+        producto = Productos.objects.all()
+        return render(request, "registros/consultarProductos.html", {'productos': producto})
 
-    return render(request, confirmacion, {'object':producto})
+    return render(request, confirmacion, {'object': producto})
 
 def registrar(request):
     if request.method == 'POST':
-        form = ProductoForm(request.POST)
-        if form.is_valid(): #Si los datos recibidos son correctos
-            form.save() #inserta
-            productos=Producto.objects.all()
-            return render(request,'registros/consultarProductos.html', {'producto':productos})
-    form = ProductoForm()
-            #Si algo sale mal se reenvian al formulario los datos ingresados
-    return render(request,'registros/consultarProductos.html',{'form': form}) 
+        form = ConsultaProductoForm(request.POST, request.FILES)
+        if form.is_valid():
+            productos = Productos.objects.all()
+            nombre  = request.POST['nombre']
+            marca = request.POST['marca']
+            categoria = request.POST['categoria']
+            subcategoria = request.POST['subcategoria']
+            color = request.POST['color']
+            precio = request.POST['precio']
+            descripcion = request.POST['descripcion']
+            cantidad= request.POST['cantidad']
+            imagen = request.FILES['imagen']
+            insert = Productos(nombre=nombre,marca=marca,categoria=categoria,subcategoria=subcategoria,color=color,precio=precio,descripcion=descripcion,cantidad=cantidad,imagen=imagen)
+            insert.save()
+            return render(request, "registros/consultarProductos.html", {'productos': productos})
+        else:
+            messages.error(request, "Error al procesar el formulario")
+    form = ConsultaProductoForm()
+    return render(request, 'registros/consultarProductos.html', {'form': form})
 
-def consultaProductoIndividual(request, id):
-    producto=Producto.objects.get(id=id)
+def consultarProductoIndividual(request, id):
+    producto = Productos.objects.get(id=id)
 
-    return render(request, "registros/formEditarProducto.html", {'producto':producto})
+    return render(request, "registros/formEditarProducto.html", {'producto': producto})
 
 def editarProducto(request, id):
-    producto = get_object_or_404(Producto, id=id)
-    form = ProductoForm(request.POST, instance=producto)
-
+    producto = get_object_or_404(Productos, id=id)
+    form = ConsultaProductoForm(request.POST, request.FILES, instance=producto)
     if form.is_valid():
-            form.save() #si el registro ya existe, se modifica.
-            productos=Producto.objects.all()
-            return render(request,"registros/consultarProductos.html",{'productos':productos})
+        form.save()  # si el registro ya existe, se modifica.
+        productos = Productos.objects.all()
+        return render(request, "registros/consultarProductos.html", {'productos': productos})
 
-    return render(request,"registros/formEditarProducto.html",{'producto':producto})
+    messages.error(request, "Error al procesar el formulario")
+    return render(request, "registros/formEditarProducto.html", {'producto': producto})
 
 def registrarComentario(request):
     if request.method == 'POST':
@@ -60,9 +70,9 @@ def registrarComentario(request):
         if form.is_valid(): #Si los datos recibidos son correctos
             form.save() #inserta
             return render(request,'inicio/principal.html')
-            form = ComentarioClienteForm()
-            #Si algo sale mal se reenvian al formulario los datos ingresados
-            return render(request,'inicio/principal.html',{'form': form})
+        form = ComentarioClienteForm()
+        #Si algo sale mal se reenvian al formulario los datos ingresados
+        return render(request,'inicio/principal.html',{'form': form})
 
 def registrarAdministrador(request):
     if request.method == 'POST':

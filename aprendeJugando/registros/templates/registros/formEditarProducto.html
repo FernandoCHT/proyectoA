@@ -7,46 +7,48 @@
 <div class="row">
     <div class="col s12 m12 l12">
         <div class="col s12 m12 l12">
-            <form action="{% url 'Editar' producto.id %}"  method="POST" role="form">
+            <form class="form-horizontal" action="{% url 'Editar' producto.id%}" method="POST" role="form" enctype="multipart/form-data">
                 {%csrf_token%}
                 <h5>Modificar producto:</h5>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Nombre" name="nombre" type="text" value={{producto.nombre}} class="validate">
+                    <input placeholder="Nombre" name="nombre" type="text" value={{producto.nombre}} >
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Marca" id="Marca" type="text" value={{producto.marca}} class="validate">
+                    <input placeholder="Marca" name="marca" type="text" value={{producto.marca}} >
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Categoria" id="Categoria" type="text"  value={{producto.categoria}} class="validate">
+                    <input placeholder="Categoria"  type="text" name="categoria"  value={{producto.categoria}} >
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="SubCategoria" id="SubCategoria"  value={{producto.subcategoria}} type="text" class="validate">
+                    <input placeholder="SubCategoria"  name="subcategoria"  value={{producto.subcategoria}} type="text" >
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Color" id="Color" type="text"  value={{producto.color}} class="validate">
+                    <input placeholder="Color" name="color"  type="text"  value={{producto.color}} >
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Precio $$" name="precio" type="number"  value={{producto.precio}} class="validate">
+                    <input placeholder="Precio $$" name="precio" type="number"  value={{producto.precio}} >
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Descripcion" name="descripcion" type="text"  value={{producto.descripcion}} class="validate">
+                    <input placeholder="Descripcion" name="descripcion" type="text"  value={{producto.descripcion}} >
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Cantidad" name="Cantidad" type="number"  value={{producto.cantidad}}  min="1" max="999" class="validate">
+                    <input placeholder="Cantidad" name="cantidad" type="number"  value={{producto.cantidad}}  >
                 </div>
-                <div class="file-field input-field col s12">
-                    <div class="btn">
-                        <span>Subir imagen</span>
-                        <input type="file" name="file">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label text-right">Descripción del producto:</label>
+                    <div class="col-sm-10">
+                        <p class="file-upload">Actualmente: <a href="/media/fotos/BobEsponga_Espa%C3%B1ol.png">fotos/BobEsponga_Español.png</a>
+                            <span class="clearable-file-input">
+                            <input type="checkbox" name="imagen" id="imagen">
+                            <label for="imagen-clear_id">Borrar</label></span><br>
+                            Modificar:
+                            <input type="file" name="imagen" id="imagen"></p>
                     </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                    </div>
                 </div>
-                <button class="btn waves-effect waves-light right" type="submit" name="action" class="aceptar">Agregar producto
-                    <i class="material-icons right">send</i>
-                </button>
-                <a href="{%url 'ConsultarP'%}" class="btn btn-primary">Cancelar</a>
+                <div class="form-actions text-right">
+                    <a href="{%url 'ConsultarP'%}" class="btn btn-primary">Cancelar</a>
+                    <input type="submit" value="Enviar" class="btn btn-primary">
+                </div>
             </form>
         </div>
     </div>
