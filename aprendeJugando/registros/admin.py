@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Admin
-from .models import Producto
+from .models import usuarios
+from .models import Productos
 from .models import ComentarioCliente
 from .models import Administrador
 
@@ -8,8 +8,8 @@ class AdministrarModelo(admin.ModelAdmin):
     readonly_fields = ('created', 'updated')
 
 # Register your models here.
-admin.site.register(Admin,AdministrarModelo)
-admin.site.register(Producto,AdministrarModelo)
+admin.site.register(usuarios,AdministrarModelo)
+admin.site.register(Productos,AdministrarModelo)
 
 class AdministrarComentariosCliente(admin.ModelAdmin):
     list_display = ('id', 'asunto')
