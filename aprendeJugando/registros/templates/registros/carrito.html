@@ -1,0 +1,68 @@
+{% extends "inicio/encabezadoInicio.html" %}
+
+{%block titulo %}Administración{% endblock %}
+
+{% block contenido%}
+<div>
+    <div class="container">
+        <div class="row">
+            <!-- Producto -->	
+
+            {% if request.session.carrito.items %}
+            {% for key, value in request.session.carrito.items %}
+            <div class="col s12 m12">
+            <div class="producto">
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src="{{value.imagen.url}}"  height="250px" class="reponsive-img" >
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <div class="col l6 m6 s12">
+                                <h5> {{value.nombre}} </h5>
+                                <h6>Cantidad: {{value.cantidad}}</h6> 
+                            </div>
+                            <div class="col l6 m6 s12">
+                                <h5>Precio: {{value.precio}}</h5>
+                            </div>
+                            <a href="{% url 'Add' value.producto_id %}" class="badge btn btn-dark badge-dark">+</a>
+                            <a href="{% url 'Sub' value.producto_id %}" class="badge btn btn-dark badge-dark">-</a>
+                        </div>
+                        <h5 class="subtotal">SubTotal:{{value.acumulado}} <h5>
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+            {% else %}
+
+                
+                <div>
+                    <center><h4 class="grey-text">El Carrito de compras esta vacio</h4></center>
+                    <center><h5 class="grey-text">Ve a al tienda para agregar productos :)</h5></center>
+                    <center><img src="static/inicio/img/carritovacio.png" width="25%" style="opacity: 0.5;"></center>
+                </div>
+
+                {% endif %}   
+            
+
+            <center><h3 id="total">Total:{{total_carrito}}</h3></center>
+
+            
+            <!-- Producto -->	
+            <h5><a href="{% url 'CLS' %}" data-id="  <l class="eliminar">Vaciar Carrito</a></h5>
+            <a href="{%url 'Principal'%}" class="waves-effect waves-light btn-large">Regresar a la tienda</a>
+            
+         
+            <div class="right">
+            <h4><font size="2"><a class="waves-effect waves-light btn-large  light-green" href="compras.php">Ir a caja</a>
+                </div>
+            
+            </div>
+        </div>
+
+        <!-- Productos carrito -->
+
+
+        {%endblock%}

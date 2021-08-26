@@ -30,7 +30,7 @@
 	<div class="container">
 		<div class="row">	
 			<div class="s12 m12 l12 center">
-				<center><img src="{%static 'inicio/img/Logo.png'%}" alt=""></center>
+				<a href="{%url 'Principal'%}"><center><img src="{%static 'inicio/img/Logo.png'%}" alt=""></center></a>
 			</div>
 			<div class="col s12 m12 l12">
 				<br>
@@ -41,61 +41,39 @@
 			<!-- Registrar cuenta -->
 			<div class="col s0 m0 l3"></div>
 			<div class="col s12 m12 l6 "  id="signup ">
-				<form name="signup" method="post" action="cuneta.php" onsubmit="return validar();">
+				<form action="{% url 'Cliente'%}"
+                method="POST"
+                role="form" >
+				{%csrf_token%}
+
 					<br><label><h4>Registra una cuenta nueva:</h4></label>
 					<br><label>Nombre(s)</label>
-					<input type="text" name="nombre" id="nombre">
+					<input type="text" name="nombre" id="nombre" required>
 					<div class="col s6">
 						<label>Apellido Paterno</label>
-						<input type="text" name="apellidopaterno" id="apellidopaterno">	
+						<input type="text" name="apellido_pat" id="apellido_pat" required>	
 					</div>
 					<div class="col s6">
 						<label>Apellido Materno</label>
-						<input  type="text" name="apellidomaterno" id="apellidomaterno">
+						<input  type="text" name="apellido_mat" id="apellido_mat" required>
 					</div>
-					<label>Genero</label><br><br>
-					<input name="Genero" type="radio" id="Masculino"/>
-					<label for="Masculino">Masculino</label>
-					<input name="Genero" type="radio" id="Femenino"/>
-					<label for="Femenino" class="right">Femenino</label><br><br>
-					<label class="col s12 m12 l12">Fecha de nacimiento: DD/MM/YYYY</label>
-					<div class="col s4 m4 l4">
-						<input type="text" name="day" id="day" placeholder="Día">
-					</div>	 
-					<select id="opc" class="browser-default col s4 m4 l4">
-						<option value="0" disabled selected>Mes</option>
-						<option value="01">Enero</option>
-						<option value="02">Febrero</option>
-						<option value="03">Marzo</option>
-						<option value="04">Abril</option>
-						<option value="05">Mayo</option>
-						<option value="06">Junio</option>
-						<option value="07">Julio</option>
-						<option value="08">Agosto</option>
-						<option value="09">Septiembre</option>
-						<option value="10">Octubre</option>
-						<option value="11">Noviembre</option>
-						<option value="12">Diciembre</option>
-					</select>	
-					<div class="col s4 m4 l4">
-						<input type="text" name="year" id="year" placeholder="Año">
+					<div class="col s6">
+						<label>Fecha de nacimiento</label>
+						<input  type="date" name="fecha_nac" id="fecha_nac" required>
 					</div>					
 					<div class="col s6 m6 l6">
 						<label>Usuario</label>
-						<input type="text" name="user" id="user">
+						<input type="text" name="usuario" id="usuario" required>
 					</div>
 					<div class="col s6 m6 l6">
 						<label>Correo</label>
-						<input type="text" name="correo" id="correo">
+						<input type="text" name="email" id="email" required>
 					</div>
 					<div class="col s6 m6 l6">
 						<label>Contraseña:</label>
-						<input type="password" name="pass" id="pass" size="30" >
+						<input type="password" name="password" id="password" size="30" required>
 					</div>
-					<div class="col s6 m6 l6">
-						<label>Confirma contraseña:</label>
-						<input type="password" name="pass2" id="pass2" size="30" >
-					</div>
+					<br>
 					<div class="center col s12 m12 l12">	
 						<br>
 						<button class="btn waves-effect waves-light left" type="submit" name="enviar">Enviar
@@ -109,7 +87,6 @@
 				</form>	
 				<p class="col s12 m12 l12 center"><h6 class="center">¿Ya tienes una cuenta? <a href="{%url 'Login'%}">Iniciar sesión</a> </h6></p>
 			</div>
-
 			<!-- Fin registrar cuenta -->	
 		</div>
 	</div>

@@ -10,12 +10,12 @@ class UserManager(models.Manager):
     def females(self):
         return self.all().filter(gender=self.GENDER_FEMALE)
 
-class usuarios(models.Model):  # Define la estructura de nuestra tabla
+class Cliente(models.Model):  # Define la estructura de nuestra tabla
+    id = models.AutoField(primary_key=True, verbose_name="Clave")
     nombre = models.CharField(max_length=30, verbose_name="Nombre") 
     apellido_pat = models.CharField(max_length=20, verbose_name="Apellido Paterno")
     apellido_mat = models.CharField(max_length=20, verbose_name="Apellido Materno")
-    genero = models.IntegerField(choices=UserManager.GENDER_CHOICES,verbose_name="Genero")
-    fecha_nac = models.DateField ( verbose_name="Fecha Nacimiento")
+    fecha_nac = models.DateField (verbose_name="Fecha Nacimiento")
     usuario = models.CharField(max_length=20, verbose_name="Usuario") 
     email = models.EmailField(max_length=24, verbose_name="Correo Electrónico")
     password = models.CharField(max_length=50)
@@ -23,8 +23,8 @@ class usuarios(models.Model):  # Define la estructura de nuestra tabla
     updated = models.DateTimeField(auto_now_add=True, verbose_name="Actualizado")
     
     class Meta:
-        verbose_name = "Administrador"
-        verbose_name_plural = "Administradores"
+        verbose_name = "Cliente"
+        verbose_name_plural = "Clientes"
         ordering = ["created"]
     def __str__(self):
         return self.usuario
@@ -36,7 +36,7 @@ class Productos(models.Model): #Define la estructura de nuestra tabla
     categoria= models.CharField(max_length=20, verbose_name="Categoria") 
     subcategoria = models.CharField(max_length=20, verbose_name="Subcategoria") 
     color = models.CharField(max_length=20, verbose_name="Color Producto") 
-    precio = models.DecimalField(max_digits=6, decimal_places=0,verbose_name="Precio")
+    precio = models.IntegerField(verbose_name="precio")
     descripcion = models.TextField(max_length=20, verbose_name="Descripcion Producto") 
     cantidad = models.DecimalField(max_digits=6, decimal_places=0,verbose_name="Cantidad")
     imagen = models.FileField(null=True, upload_to="fotos", blank=True,verbose_name="Fotografía Producto")

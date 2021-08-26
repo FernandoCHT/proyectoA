@@ -3,6 +3,7 @@ from django.db import models
 from .models import Productos
 from .models import ComentarioCliente
 from .models import Administrador
+from .models import Cliente
 from django.forms.models import fields_for_model
 from django.forms import ModelForm, ClearableFileInput, widgets
 
@@ -26,3 +27,8 @@ class AdministradorForm(forms.ModelForm):
     class Meta:
         model = Administrador
         fields = ['nombre','apellidoPaterno', 'apellidoMaterno', 'usuario', 'correo', 'password']
+
+class ClienteForm(forms.ModelForm):
+    class Meta:
+        model = Cliente
+        fields = ['nombre', 'apellido_pat', 'apellido_mat', 'fecha_nac', 'usuario', 'email', 'password']
