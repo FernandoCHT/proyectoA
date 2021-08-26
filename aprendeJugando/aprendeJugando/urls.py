@@ -23,6 +23,7 @@ from registros import views as views_registros
 
 from django.contrib.auth.views import LoginView, LogoutView
 
+from registros.views import tienda, agregar_producto, eliminar_producto, restar_producto, limpiar_carrito
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.principal, name="Principal"),
@@ -37,6 +38,7 @@ urlpatterns = [
     path('registrarProducto/', views_registros.registroProducto, name="RegistrarP"),
     path('registrarAdmin/', views_registros.registroAdmin, name="RegistrarA"),
     path('consultarProducto',views_registros.registros, name="ConsultarP"),
+    path('carrito',views_registros.carrito, name="Carrito"),
     path('registrar/',views_registros.registrar,name="Registrar"),
     path('eliminarProducto/<int:id>/', views_registros.eliminarProducto, name='Eliminar'),
     path('formEditarProducto/<int:id>/',views_registros.consultarProductoIndividual,name='ConsultaIndividual'),
@@ -44,8 +46,12 @@ urlpatterns = [
 
     path('registrarComentario/',views_registros.registrarComentario,name="RegistrarC"),
     path('registrarAdministrador/',views_registros.registrarAdministrador,name="Administrador"),
+    path('registrarCliente/', views_registros.registrarCliente, name="Cliente"),
 
-
+    path('agregar/<int:producto_id>/', agregar_producto, name="Add"),
+    path('eliminar/<int:producto_id>/', eliminar_producto, name="Del"),
+    path('restar/<int:producto_id>/', restar_producto, name="Sub"),
+    path('limpiar/', limpiar_carrito, name="CLS"),
 
 ]
 if settings.DEBUG:

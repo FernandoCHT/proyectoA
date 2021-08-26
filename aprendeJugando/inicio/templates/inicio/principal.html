@@ -123,7 +123,7 @@
 						</div>		
 					</div>	
 				</div>
-				<div id="productos">
+				<div >
 					<div class="container">
 						<div class="row">
 							<div id="separador" class="col s12 m12 l12"></div>
@@ -135,81 +135,33 @@
 							</div>
 							<div class="row">
 								<!--Proucto 1-->
+								{% for producto in productos %}
 								<div class="col s12 m6 l3">
 									<div class="card">
 										<div class="card-image waves-effect waves-block waves-light">
-											<img class="activator" src="media/fotos/p1.jpg">
+											<img class="activator" src="{{producto.imagen.url}}">
 										</div>
 										<div class="card-content">
-											<span class="card-title activator grey-text text-darken-4">Cubo Artesanal<i class="material-icons right">more_vert</i></span>
-											<p><a href="#"><h5>Agregar al carrito</h5></a></p>
+											<span class="card-title activator grey-text text-darken-4">{{producto.nombre}}<i class="material-icons right">more_vert</i></span>
+											<p><a href="{% url 'Add' producto.id %}"><h5>Agregar al carrito</h5></a></p>
 										</div>
 										<div class="card-reveal">
-											<span class="card-title grey-text text-darken-4">Cubo Artesanal<i class="material-icons right">close</i></span>
-											<p>Precio: $200</p>
-											<p>Marca: Moyu</p>
-											<p>Base: Cafe</p>
-							<p><a href="#"><h6>Agregar al carrito</h6></a></p>
+											<span class="card-title grey-text text-darken-4">{{producto.nombre}}<i class="material-icons right">close</i></span>
+											<p>Precio: {{producto.precio}}</p>
+											<p>Marca: {{producto.marca}}</p>
+											<p>Base: {{producto.color}}</p>
+											
+							<p><a href="{% url 'Add' producto.id %}"><h6>Agregar al carrito</h6></a></p>
 										</div>
 									</div>
 								</div>
+								{% endfor %}
 								<!--Proucto 2-->
-								<div class="col s12 m6 l3">
-									<div class="card">
-										<div class="card-image waves-effect waves-block waves-light">
-											<img class="activator" src="media/fotos/p2.jpg">
-										</div>
-										<div class="card-content">
-											<span class="card-title activator grey-text text-darken-4">Gosth Cube<i class="material-icons right">more_vert</i></span>
-											<p><a href="#"><h5>Agregar al carrito</h5></a></p>
-										</div>
-										<div class="card-reveal">
-											<span class="card-title grey-text text-darken-4">Gosth Cube<i class="material-icons right">close</i></span>
-											<p>Precio: $500</p>
-											<p>Marca: Mefferts</p>
-											<p>Base: Negro</p>
-							<p><a href="#"><h6>Agregar al carrito</h6></a></p>
-										</div>
-									</div>
-								</div>
+								
 								<!--Proucto 3-->
-								<div class="col s12 m6 l3">
-									<div class="card">
-										<div class="card-image waves-effect waves-block waves-light">
-											<img class="activator" src="media/fotos/p3.jpg">
-										</div>
-										<div class="card-content">
-											<span class="card-title activator grey-text text-darken-4">Manzana 3x3<i class="material-icons right">more_vert</i></span>
-											<p><a href="#"><h5>Agregar al carrito</h5></a></p>
-										</div>
-										<div class="card-reveal">
-											<span class="card-title grey-text text-darken-4">Manzana 3x3<i class="material-icons right">close</i></span>
-											<p>Precio: $150</p>
-											<p>Marca: ShengShow</p>
-											<p>Base: Rojo</p>
-							<p><a href="#"><h6>Agregar al carrito</h6></a></p>
-										</div>
-									</div>
-								</div>
+								
 								<!--Proucto 4-->
-								<div class="col s12 m6 l3">
-									<div class="card">
-										<div class="card-image waves-effect waves-block waves-light">
-											<img class="activator" src="media/fotos/p4.jpg">
-										</div>
-										<div class="card-content">
-											<span class="card-title activator grey-text text-darken-4">Megamorphix<i class="material-icons right">more_vert</i></span>
-											<p><a href="#"><h5>Agregar al carrito</h5></a></p>
-										</div>
-										<div class="card-reveal">
-											<span class="card-title grey-text text-darken-4">Megamorphix<i class="material-icons right">close</i></span>
-											<p>Precio: $200</p>
-											<p>Marca: Sheng Show</p>
-											<p>Base: Colors</p>
-							<p><a href="#"><h6>Agregar al carrito</h6></a></p>
-										</div>
-									</div>
-								</div>
+								
 								<!--Fin productos -->
 							</div>
 							<h4>¡Compra ahora! <font size="5" class="right"><a class="waves-effect waves-light btn-large" href="#">¡Comprar!</a></font></h4>

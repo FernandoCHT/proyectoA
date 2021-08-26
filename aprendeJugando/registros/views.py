@@ -3,10 +3,17 @@ from .models import Productos
 from .forms import ConsultaProductoForm
 from .forms import ComentarioClienteForm
 from .forms import AdministradorForm
+from .forms import ClienteForm
+from .Carrito import Carrito
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
+from django.shortcuts import redirect
 
 # Create your views here.
+def carrito(request):
+    productos=Productos.objects.all()
+    return render(request, "registros/carrito.html",{'productos':productos})
+
 def registroProducto(request):
     return render(request, "registros/registroProducto.html")
 
@@ -83,3 +90,42 @@ def registrarAdministrador(request):
             form = AdministradorForm()
             #Si algo sale mal se reenvian al formulario los datos ingresados
             return render(request,'registros/registroAdmin.html',{'form': form})
+
+def registrarCliente(request):
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid(): #Si los datos recibidos son correctos
+            form.save() #inserta
+            return render(request,'inicio/registro.html')
+        form = ClienteForm()
+        #Si algo sale mal se reenvian al formulario los datos ingresados
+        return render(request,'inicio/registro.html',{'form': form})
+
+#carrito
+def tienda(request):
+    #return HttpResponse("Hola Pythonizando")
+    productos = Productos.objects.all()
+    return render(request, "tienda.html", {'productos':productos})
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Productos.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect("Carrito")
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Productos.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect("Carrito")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Productos.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect("Carrito")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("Carrito")

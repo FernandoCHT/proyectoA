@@ -1,4 +1,6 @@
 from django.shortcuts import render, HttpResponse
+from registros.models import Productos
+
 
 # Create your views here.
 
@@ -14,7 +16,8 @@ def formulario(request):
     return render(request, "inicio/formulario.html")
 
 def principal(request):
-    return render(request, "inicio/principal.html")
+    productos=Productos.objects.all()
+    return render(request, "inicio/principal.html", {'productos':productos})
 
 def registro(request):
     return render(request, "inicio/registro.html")
@@ -30,3 +33,6 @@ def terminos(request):
 
 def aviso(request):
     return render(request, "inicio/aviso.html")
+
+
+
