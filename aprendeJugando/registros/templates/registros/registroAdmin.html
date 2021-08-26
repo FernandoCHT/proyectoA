@@ -22,26 +22,26 @@
       {%csrf_token%}
         <br /><label><h4>Registrar Administrador:</h4></label> <br />
         <label>Nombre</label>
-        <input type="text" name="nombre" id="nombre" />
+        <input type="text" name="nombre" id="nombre" required/>
         <div class="col s6">
           <label>Apellido Paterno</label>
-          <input type="text" name="apellidoPaterno" id="apellidoPaterno" />
+          <input type="text" name="apellidoPaterno" id="apellidoPaterno" required />
         </div>
         <div class="col s6">
           <label>Apellido Materno</label>
-          <input type="text" name="apellidoMaterno" id="apellidoMaterno" />
+          <input type="text" name="apellidoMaterno" id="apellidoMaterno" required/>
         </div>
         <div class="col s6 m6 l6">
           <label>Usuario</label>
-          <input type="text" name="usuario" id="usuario" />
+          <input type="text" name="usuario" id="usuario" required/>
         </div>
         <div class="col s6 m6 l6">
           <label>Correo</label>
-          <input type="text" name="correo" id="correo" />
+          <input type="text" name="correo" id="correo" required/>
         </div>
         <div class="col s6 m6 l6">
           <label>Contraseña:</label>
-          <input type="password" name="password" id="password" size="8" />
+          <input type="password" name="password" id="password" size="8" required/>
         </div>
         
         <div class="center col s12 m12 l12">

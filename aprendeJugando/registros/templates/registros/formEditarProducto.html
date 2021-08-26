@@ -11,38 +11,38 @@
                 {%csrf_token%}
                 <h5>Modificar producto:</h5>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Nombre" name="nombre" type="text" value={{producto.nombre}} >
+                    <input placeholder="Nombre" name="nombre" type="text" value={{producto.nombre}} required>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Marca" name="marca" type="text" value={{producto.marca}} >
+                    <input placeholder="Marca" name="marca" type="text" value={{producto.marca}} required>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Categoria"  type="text" name="categoria"  value={{producto.categoria}} >
+                    <input placeholder="Categoria"  type="text" name="categoria"  value={{producto.categoria}} required>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="SubCategoria"  name="subcategoria"  value={{producto.subcategoria}} type="text" >
+                    <input placeholder="SubCategoria"  name="subcategoria"  value={{producto.subcategoria}} type="text" required>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Color" name="color"  type="text"  value={{producto.color}} >
+                    <input placeholder="Color" name="color"  type="text"  value={{producto.color}} required>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Precio $$" name="precio" type="number"  value={{producto.precio}} >
+                    <input placeholder="Precio $$" name="precio" type="number"  value={{producto.precio}} required>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Descripcion" name="descripcion" type="text"  value={{producto.descripcion}} >
+                    <input placeholder="Descripcion" name="descripcion" type="text"  value={{producto.descripcion}} required>
                 </div>
                 <div class="input-field col s12 m6">
-                    <input placeholder="Cantidad" name="cantidad" type="number"  value={{producto.cantidad}}  >
+                    <input placeholder="Cantidad" name="cantidad" type="number"  value={{producto.cantidad}}  required>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-right">Descripción del producto:</label>
                     <div class="col-sm-10">
-                        <p class="file-upload">Actualmente: <a href="/media/fotos/BobEsponga_Espa%C3%B1ol.png">fotos/BobEsponga_Español.png</a>
+                        <p class="file-upload">Actualmente: <a href="/media/fotos/BobEsponga_Espa%C3%B1ol.png" >fotos/BobEsponga_Español.png</a>
                             <span class="clearable-file-input">
-                            <input type="checkbox" name="imagen" id="imagen">
+                            <input type="checkbox" name="imagen" id="imagen" >
                             <label for="imagen-clear_id">Borrar</label></span><br>
                             Modificar:
-                            <input type="file" name="imagen" id="imagen"></p>
+                            <input type="file" name="imagen" id="imagen" required></p>
                     </div>
                 </div>
                 <div class="form-actions text-right">
